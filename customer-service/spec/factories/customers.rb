@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :customer do
-    name { "MyString" }
-    address { "MyString" }
-    orders_count { 1 }
+    sequence(:name) { |n| "Cliente #{n}" }
+    address { "Calle Principal 123, Ciudad" }
+    orders_count { 0 }
   end
 end

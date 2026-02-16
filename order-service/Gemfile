@@ -33,16 +33,16 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
 
-# Faraday: cliente HTTP para llamadas entre microservicios (order-service -> customer-service)
 gem "faraday"
-# Bunny: cliente RabbitMQ para emitir y escuchar eventos (order_service emite, customer_service escucha)
 gem "bunny"
+gem "dotenv-rails"
 
 group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem "faker"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
