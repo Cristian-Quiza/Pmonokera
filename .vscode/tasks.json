@@ -1,0 +1,247 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 Start Customer Service",
+      "type": "shell",
+      "command": "cd customer-service && bundle exec rails s -p 3001 -b 0.0.0.0",
+      "windows": {
+        "command": "cd customer-service; $env:PORT='3001'; bundle exec rails s -p 3001 -b 0.0.0.0"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "services"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Puma starting.*$",
+          "endsPattern": "^.*Use Ctrl-C to stop.*$"
+        }
+      }
+    },
+    {
+      "label": "🚀 Start Order Service",
+      "type": "shell",
+      "command": "cd order-service && bundle exec rails s -p 3002 -b 0.0.0.0",
+      "windows": {
+        "command": "cd order-service; $env:PORT='3002'; bundle exec rails s -p 3002 -b 0.0.0.0"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "services"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Puma starting.*$",
+          "endsPattern": "^.*Use Ctrl-C to stop.*$"
+        }
+      }
+    },
+    {
+      "label": "🚀 Start Frontend",
+      "type": "shell",
+      "command": "cd frontend && npm run dev",
+      "windows": {
+        "command": "cd frontend; npm run dev"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "services"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*starting.*$",
+          "endsPattern": "^.*compiled.*$|^.*Ready in.*$"
+        }
+      }
+    },
+    {
+      "label": "🎯 Start All Services",
+      "dependsOn": [
+        "🚀 Start Customer Service",
+        "🚀 Start Order Service",
+        "🚀 Start Frontend"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    },
+    {
+      "label": "📦 Install Customer Service Dependencies",
+      "type": "shell",
+      "command": "cd customer-service && bundle config set --local path 'vendor/bundle' && bundle install",
+      "windows": {
+        "command": "cd customer-service; bundle config set --local path 'vendor/bundle'; bundle install"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📦 Install Order Service Dependencies",
+      "type": "shell",
+      "command": "cd order-service && bundle config set --local path 'vendor/bundle' && bundle install",
+      "windows": {
+        "command": "cd order-service; bundle config set --local path 'vendor/bundle'; bundle install"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📦 Install Frontend Dependencies",
+      "type": "shell",
+      "command": "cd frontend && npm install",
+      "windows": {
+        "command": "cd frontend; npm install"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📦 Install All Dependencies",
+      "dependsOn": [
+        "📦 Install Customer Service Dependencies",
+        "📦 Install Order Service Dependencies",
+        "📦 Install Frontend Dependencies"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "🗄️ Setup Customer Service Database",
+      "type": "shell",
+      "command": "cd customer-service && bundle exec rails db:create db:migrate db:seed",
+      "windows": {
+        "command": "cd customer-service; bundle exec rails db:create; bundle exec rails db:migrate; bundle exec rails db:seed"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🗄️ Setup Order Service Database",
+      "type": "shell",
+      "command": "cd order-service && bundle exec rails db:create db:migrate db:seed",
+      "windows": {
+        "command": "cd order-service; bundle exec rails db:create; bundle exec rails db:migrate; bundle exec rails db:seed"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🗄️ Setup All Databases",
+      "dependsOn": [
+        "🗄️ Setup Customer Service Database",
+        "🗄️ Setup Order Service Database"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "🔧 Complete Setup (First Time)",
+      "dependsOn": [
+        "📦 Install All Dependencies",
+        "🗄️ Setup All Databases"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 Test Customer Service",
+      "type": "shell",
+      "command": "cd customer-service && bundle exec rspec",
+      "windows": {
+        "command": "cd customer-service; bundle exec rspec"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 Test Order Service",
+      "type": "shell",
+      "command": "cd order-service && bundle exec rspec",
+      "windows": {
+        "command": "cd order-service; bundle exec rspec"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧹 Clean Customer Service",
+      "type": "shell",
+      "command": "cd customer-service && bundle exec rails db:drop db:create db:migrate db:seed",
+      "windows": {
+        "command": "cd customer-service; bundle exec rails db:drop; bundle exec rails db:create; bundle exec rails db:migrate; bundle exec rails db:seed"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧹 Clean Order Service",
+      "type": "shell",
+      "command": "cd order-service && bundle exec rails db:drop db:create db:migrate db:seed",
+      "windows": {
+        "command": "cd order-service; bundle exec rails db:drop; bundle exec rails db:create; bundle exec rails db:migrate; bundle exec rails db:seed"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

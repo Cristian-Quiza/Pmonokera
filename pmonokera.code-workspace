@@ -1,0 +1,50 @@
+{
+  "folders": [
+    {
+      "name": "📦 P-Monokera (Root)",
+      "path": "."
+    },
+    {
+      "name": "🔧 Customer Service",
+      "path": "./customer-service"
+    },
+    {
+      "name": "🔧 Order Service",
+      "path": "./order-service"
+    },
+    {
+      "name": "🎨 Frontend",
+      "path": "./frontend"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/vendor/bundle": true,
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/tmp": true,
+      "**/log": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/vendor/bundle": true,
+      "**/tmp": true,
+      "**/log": true
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[ruby]": {
+      "editor.defaultFormatter": "rebornix.ruby"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  }
+}
