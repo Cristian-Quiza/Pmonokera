@@ -1,0 +1,32 @@
+{
+  "recommendations": [
+    // Ruby
+    "rebornix.ruby",
+    "castwide.solargraph",
+    "kaiwood.endwise",
+    
+    // JavaScript/TypeScript
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    
+    // React/Next.js
+    "dsznajder.es7-react-js-snippets",
+    "wix.vscode-import-cost",
+    
+    // Database
+    "ckolkman.vscode-postgres",
+    
+    // Git
+    "eamodio.gitlens",
+    
+    // Utilidades
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "oderwat.indent-rainbow",
+    "PKief.material-icon-theme",
+    
+    // Docker (opcional)
+    "ms-azuretools.vscode-docker"
+  ]
+}
