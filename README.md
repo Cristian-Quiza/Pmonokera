@@ -11,10 +11,11 @@ Arquitectura de **microservicios event-driven** desarrollada con Ruby on Rails 8
 3. [Instalación](#instalación)
 4. [Configuración](#configuración)
 5. [Ejecución](#ejecución)
-6. [APIs](#apis)
-7. [Pruebas (RSpec)](#pruebas-rspec)
-8. [Frontend (Next.js)](#frontend-nextjs)
-9. [Diseño y Patrones](#diseño-y-patrones)
+6. [🪟 Instrucciones para Windows](#-instrucciones-para-windows)
+7. [APIs](#apis)
+8. [Pruebas (RSpec)](#pruebas-rspec)
+9. [Frontend (Next.js)](#frontend-nextjs)
+10. [Diseño y Patrones](#diseño-y-patrones)
 
 ---
 
@@ -193,6 +194,50 @@ Acceder a: **http://localhost:3000**
 ```bash
 docker-compose up
 ```
+
+---
+
+## 🪟 Instrucciones para Windows
+
+**⚠️ IMPORTANTE:** Este proyecto está diseñado para Linux/Mac. Si estás en Windows, tienes dos opciones:
+
+### Opción 1: WSL2 (Windows Subsystem for Linux) - **RECOMENDADA** ✅
+
+```powershell
+# 1. Instalar WSL2 (como Administrador en PowerShell)
+wsl --install
+
+# 2. Reiniciar y abrir Ubuntu desde el menú de inicio
+
+# 3. Seguir las instrucciones normales de Linux
+```
+
+**Luego ejecutar en Ubuntu:**
+```bash
+cd ~
+git clone https://github.com/Cristian-Quiza/Pmonokera.git
+cd Pmonokera
+./start_services.sh
+```
+
+Acceder desde Windows: http://localhost:3000
+
+### Opción 2: Scripts PowerShell para Windows Nativo
+
+```powershell
+# Permitir ejecución de scripts (una sola vez, como Administrador)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Ejecutar el script de inicio
+.\start_services.ps1
+```
+
+**📖 Ver guía completa:** [INSTRUCCIONES_WINDOWS.md](INSTRUCCIONES_WINDOWS.md)
+
+**Requisitos para Windows nativo:**
+- Ruby 3.2+ desde https://rubyinstaller.org/
+- PostgreSQL 14+ desde https://www.postgresql.org/download/windows/
+- Node.js 20+ desde https://nodejs.org/
 
 ---
 
